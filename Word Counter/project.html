@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Word Counter </title>
+    <link rel="stylesheet" href="./project.css">
+    <link rel="icon" href="./photos/wordcount1.jpeg">
+</head>
+<body>
+    
+    <div><img src="./photos/word.png" alt=""></div>
+    <div class="container">
+    <textarea name="text" id="text" cols="100" onkeyup="processText()" rows="25" placeholder="Type or paste your text here">Because starting at the beginning always makes the most sense, let’s talk about transition words to start a paragraph.
+Depending on what type of paragraph you are writing, the transition words will change. Because an introduction paragraph comes first in a paper, it does not need a beginning transition sentence. However, each subsequent paragraph will need to start with one in order to bridge between itself and the previous paragraph. Usually a transition word at the beginning of a paragraph will indicate the introduction of a new idea.</textarea>
+    <ul class="elements">
+        <li><span class="num" id="word">0</span> Word</li>
+        <li><span class="num" id="chars">0</span> Characters</li>
+        <li><span class="num" id="sents">0</span> Sentence</li>
+        <li><span class="num" id="paras">0</span> Paragraph</li>
+    </ul>
+    </div> 
+    <br>
+    <div class="bottomBar">
+        <button class="btn" onclick="document.getElementById('text').value=document.getElementById('text').value.toUpperCase()">UPPERCASE</button>
+        <button class="btn" onclick="document.getElementById('text').value=document.getElementById('text').value.toLowerCase()">lowercase</button>
+        <button class="btn" onclick="document.getElementById('text').value = document.getElementById('text').value.split('.').filter(e=>e).map(e=> (e[0]!=e.trim()[0]?`${e[0]}${e.trim()[0].toUpperCase()}`:e.trim()[0].toUpperCase())+e.slice(e.indexOf(e.trim()[0])+1,)).join('.')">Sentence case</button>
+        <button class="btn"  onclick="document.getElementById('text').value = document.getElementById('text').value.split(' ').filter(e=>e).map(e=> e[0].toUpperCase()+e.slice(1,)).join(' ')">Title Case</button>
+        <button class="btn" onclick="document.getElementById('text').value='';processText()">Clear</button>
+    </div>
+    <script src="./project.js"></script>
+</body>
+</html>
